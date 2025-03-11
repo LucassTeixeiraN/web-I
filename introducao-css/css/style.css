@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow-y: hidden;
+}
+
+header{
+    background-image: url("../img/601707.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: start;
+}
+
+#meu-nome {
+    border-radius: 5px;
+    background-color: rebeccapurple;
+    width: 300px;
+    margin-top: 10px;
+    color: white;
+}
+
+main {
+    background-color: rebeccapurple;
+    color: white;
+    margin-top: -50px;
+}
+
+section {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+#personal-infos-title {
+    font-size: 30px;
+}
+
+ul {
+    width: 250px;
+    text-align: start;
+    margin:20px 0 20px 30px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(88, 42, 134);
+
+}
+
+#minhaFoto {
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+    animation-name: animacao;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+footer a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes animacao {
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
