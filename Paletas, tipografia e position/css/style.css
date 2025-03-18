@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+header{
+    background-image: url("../img/601707.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 60vh;
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    margin-top: -100px;
+}
+
+#meu-nome {
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white; 
+    position: fixed;
+    top: 1%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#meu-nome h1{
+    background-color: rebeccapurple;
+    width: 300px;
+    font-size: 2em;
+}
+
+main {
+    background-color: rebeccapurple;
+    color: white;
+    margin-top: 0px;
+    height: 70vh;
+}
+
+section {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.section-text {
+    font-size: 2em;
+}
+
+ul {
+    width: 250px;
+    text-align: start;
+    margin:20px 0 20px 30px;
+    font-size: 1em;
+}
+
+
+footer {
+    display: grid;
+    background-color: rgb(88, 42, 134);
+    height: 150px;
+}
+
+#github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+#github:hover {
+    cursor: pointer;
+}
+
+#github:hover #minhaFoto{
+    animation-name: animacao;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+#github:hover p{
+    text-decoration: underline;
+    color: green;
+}
+
+#minhaFoto {
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
+
+footer p {
+    font-size: 1.3em;
+    color: white;
+    text-decoration: none;
+}
+
+
+@keyframes animacao {
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
