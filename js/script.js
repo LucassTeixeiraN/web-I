@@ -31,11 +31,32 @@ let limparTarefas = function() {
     }
 }
 
+
 let InserirTarefa = () => tarefas.map((tarefa) => {
 
 
     let novaTarefa = document.createElement("div")
     novaTarefa.id = `tarefa-${ids}`
+    novaTarefa.addEventListener("click", function(el) {
+        btnId = el.target.id
+        
+        let i = 0
+        while(i < tarefas.length) {
+            console.log(tarefas[i]);
+            if (tarefas[i].id == btnId) {
+                tarefas.splice(i, 1)
+                break
+            }
+            i++
+        }
+        
+        console.log(tarefas);
+        document.getElementById(`tarefa-${btnId}`).remove()
+
+        criarTarefa()
+        
+    })
+
 
     let tituloTarefa = document.createElement("h1")
     let tituloTarefaTexto = document.createTextNode(tarefa.titulo)
@@ -59,10 +80,9 @@ let InserirTarefa = () => tarefas.map((tarefa) => {
         
         let i = 0
         while(i < tarefas.length) {
-            if (tarefas[i].ids === btnId) {
+            console.log(tarefas[i]);
+            if (tarefas[i].id == btnId) {
                 tarefas.splice(i, 1)
-                console.log("foi");
-                
                 break
             }
             i++
