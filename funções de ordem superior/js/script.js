@@ -37,26 +37,6 @@ let InserirTarefa = () => tarefas.map((tarefa) => {
 
     let novaTarefa = document.createElement("div")
     novaTarefa.id = `tarefa-${ids}`
-    novaTarefa.addEventListener("click", function(el) {
-        btnId = el.target.id
-        
-        let i = 0
-        while(i < tarefas.length) {
-            console.log(tarefas[i]);
-            if (tarefas[i].id == btnId) {
-                tarefas.splice(i, 1)
-                break
-            }
-            i++
-        }
-        
-        console.log(tarefas);
-        document.getElementById(`tarefa-${btnId}`).remove()
-
-        criarTarefa()
-        
-    })
-
 
     let tituloTarefa = document.createElement("h1")
     let tituloTarefaTexto = document.createTextNode(tarefa.titulo)
@@ -74,7 +54,29 @@ let InserirTarefa = () => tarefas.map((tarefa) => {
     let botaoExcluirTexto = document.createTextNode("X")
     botaoExcluir.appendChild(botaoExcluirTexto)
     botaoExcluir.id = `${ids}`
+
+    let botaoEditar = document.createElement("button")
+    let botaoEditarTexto = document.createTextNode("editar")
+    botaoEditar.appendChild(botaoEditarTexto)
+    botaoEditar.id = `edit-${ids}`
     
+
+    botaoEditar.addEventListener("click", function(el, ids) {
+        let idx = el.target.id.split("-")[1];
+
+        let titulo = window.prompt("Insira o título da tarefa")
+        let tarefa = window.prompt("Insira a tarefa")
+        let data = window.prompt("Insira a data de conclusão da tarefa")
+
+        tarefas[idx] = {
+            titulo: titulo,
+            tarefa: tarefa,
+            data: data,
+            id: ids
+        }
+        InserirTarefa()
+    })
+
     botaoExcluir.addEventListener("click", function(el) {
         btnId = el.target.id
         
@@ -98,6 +100,9 @@ let InserirTarefa = () => tarefas.map((tarefa) => {
     novaTarefa.appendChild(conteudoTarefa)
     novaTarefa.appendChild(dataTarefa)
     novaTarefa.appendChild(botaoExcluir)
+    novaTarefa.appendChild(botaoEditar)
 
     tarefaContainer.appendChild(novaTarefa)
+
+    ids++
 })
