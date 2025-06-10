@@ -1,4 +1,6 @@
 const addBtn = document.getElementById("adicionar-btn")
+const editBtn = document.getElementById("editar-btn")
+const deleteBtn = document.getElementById("delete-btn")
 const tarefaContainer = document.getElementById("tarefa-container")
 
 
@@ -10,11 +12,50 @@ addBtn.addEventListener("click", function() {
     limparTarefas()
     getTarefas()
     carregarTarefas()
-    btnFunction()
-    console.log(tarefas);
     
 })
 
+deleteBtn.addEventListener("click", function() {
+    
+    deletarTarefa()
+    getTarefas()
+    carregarTarefas()
+    
+})
+
+editBtn.addEventListener("click", function() {
+    
+    editarTarefa()
+    limparTarefas()
+    getTarefas()
+    carregarTarefas()
+    
+})
+
+
+let editarTarefa = function() {
+    
+    let id = window.prompt("Insira o id da tarefa (começa no 0)")
+    let titulo = window.prompt("Insira o título da tarefa")
+    let local = window.prompt("Insira a tarefa")
+    let data = window.prompt("Insira a data de conclusão da tarefa")
+
+    let novaTarefa = {
+        titulo: titulo,
+        local: local,
+        data: data,
+        id: id
+    }
+
+    sessionStorage.setItem("tarefa"+id, JSON.stringify(novaTarefa))
+}
+
+let deletarTarefa = function() {
+    
+    let id = window.prompt("Insira o id da tarefa (começa no 0)")
+
+    sessionStorage.removeItem("tarefa"+id)
+}
 
 let criarTarefa = function() {
     let titulo = window.prompt("Insira o título da tarefa")
@@ -64,7 +105,6 @@ const carregarTarefas = () => {
         criarLocal(div, tarefa.local)
         criarData(div, tarefa.data)
     })
-    btnFunction()
 }
 
 let limparTarefas = function() {
@@ -85,31 +125,6 @@ const a = () => {
     
 }
 
-const btnFunction = () => {
-    let a = document.querySelectorAll(".tarefa")
-    
-    a.forEach((tarefa) => {
-        if (!tarefa.dataset.listenerAdded) {
-            tarefa.addEventListener("click", function(e){
-                let titulo = window.prompt("Insira o título da tarefa")
-                let local = window.prompt("Insira a tarefa")
-                let data = window.prompt("Insira a data de conclusão da tarefa")
-
-                let novaTarefa = {
-                    titulo: titulo,
-                    local: local,
-                    data: data,
-                    id: sessionStorage.length
-                }
-                sessionStorage.setItem("tarefa"+e.target.id, JSON.stringify(novaTarefa))
-                })
-            }
-        // tarefa.dataset.listenerAdded = true;
-        getTarefas()
-        carregarTarefas()
-    })
-
-}
 
 getTarefas()
 carregarTarefas()
